@@ -12,6 +12,8 @@ import torch.nn.functional as F
 from torch.nn.parallel import DistributedDataParallel as DDP
 import tiktoken
 
+DATA_DIR = "/home/user/.cache/gpt-sketchpad/data"
+
 @dataclass
 class GPTConfig:
     block_size: int
@@ -384,8 +386,9 @@ def main():
         print(f"{total_batch_size=}, {block_size=}, {micro_batch=}, {ddp_world_size=}, {grad_accum=}")
 
     # Data Loader
+    fineweb_dir = os.path.join(DATA_DIR, "fineweb-edu-sample-10BT")
     train_loader = DataLoader(
-        data_path=os.path.dirname(__file__)+'/../data/fineweb-edu-sample-10BT',
+        data_path=fineweb_dir,
         batch_size=micro_batch,
         block_size=block_size,
         proc_rank=ddp_rank,
@@ -393,7 +396,7 @@ def main():
         split='train',
     )
     val_loader = DataLoader(
-        data_path=os.path.dirname(__file__)+'/../data/fineweb-edu-sample-10BT',
+        data_path=fineweb_dir,
         batch_size=micro_batch,
         block_size=block_size,
         proc_rank=ddp_rank,
@@ -491,7 +494,7 @@ def main():
     # Read all lines from the validation set
     hellaswag_every = 250  # steps
     hellaswag_renderer = HellaSwagRenderer()
-    hellaswag_fp = os.path.dirname(__file__) + "/../data/hellaswag/hellaswag_val.jsonl"
+    hellaswag_fp = os.path.join(DATA_DIR, "hellaswag", "hellaswag_val.jsonl")
     with open(hellaswag_fp, "r") as f:
         lines = f.readlines()
     hellaswag_examples = [json.loads(line) for line in lines]
@@ -713,4 +716,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
