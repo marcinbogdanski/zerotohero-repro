@@ -5,5 +5,8 @@ __pycache__/
 # Environments
 .venv/
 
+# Editors
+.vscode/
+
 # Other
 bin/
