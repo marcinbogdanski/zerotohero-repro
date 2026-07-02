@@ -5,8 +5,8 @@ Collection of Jupyter Notebooks building up to reproduce GPT-2 from scratch.
 ## Setup
 
 ```
-git clone git@github.com:marcinbogdanski/gpt-sketchpad.git
-cd gpt-sketchpad
+git clone git@github.com:marcinbogdanski/zerotohero-repro.git
+cd zerotohero-repro
 uv sync
 ```
 
