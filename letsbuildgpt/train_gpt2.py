@@ -12,7 +12,7 @@ import torch.nn.functional as F
 from torch.nn.parallel import DistributedDataParallel as DDP
 import tiktoken
 
-DATA_DIR = "/home/user/.cache/gpt-sketchpad/data"
+DATA_DIR = "/home/user/.cache/zerotohero-repro/data"
 
 @dataclass
 class GPTConfig:

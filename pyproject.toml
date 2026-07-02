@@ -1,5 +1,5 @@
 [project]
-name = "gpt-sketchpad"
+name = "zerotohero-repro"
 version = "0.1.0"
 description = "Collection of Jupyter Notebooks building up to reproduce GPT-2 from scratch"
 readme = "README.md"
